@@ -2,25 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:math';
 
-class decimalInputField extends StatefulWidget {
+class DecimalInputField extends StatefulWidget {
   final double numberToBeRounded;
-  final Function(double) setResult;
-  const decimalInputField({
+  final void Function(double) setResult;
+  const DecimalInputField({
     super.key,
     required this.numberToBeRounded,
     required this.setResult,
   });
   @override
-  State<decimalInputField> createState() => _decimalInputFieldState();
+  State<DecimalInputField> createState() => _DecimalInputFieldState();
 }
 
-class _decimalInputFieldState extends State<decimalInputField> {
+class _DecimalInputFieldState extends State<DecimalInputField> {
   final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: BoxConstraints(maxWidth: 80),
+      constraints: BoxConstraints(maxWidth: 55),
       child: TextField(
         controller: _controller,
         onEditingComplete: () {

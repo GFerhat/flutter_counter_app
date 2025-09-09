@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 0, 0, 0),
+          seedColor: const Color.fromARGB(255, 188, 93, 93),
         ),
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -112,14 +112,12 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
-        titleTextStyle: TextStyle(fontSize: 30),
       ),
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(0),
-          // Center is a layout widget. It takes a single child and positions it
-          // in the middle of the parent.
-          child: Column(
+        child: SizedBox(
+          height: 200,
+          width: 200,
+          child: Row(
             // Column is also a layout widget. It takes a list of children and
             // arranges them vertically. By default, it sizes itself to fit its
             // children horizontally, and tries to be as tall as its parent.
@@ -133,21 +131,21 @@ class _MyHomePageState extends State<MyHomePage> {
             // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
             // action in the IDE, or press "p" in the console), to see the
             // wireframe for each widget.
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Text(
                 '$_counter',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              decimalInputField(
-                numberToBeRounded: _counter,
-                setResult: _setCounter,
-              ),
               FloatingActionButton(
                 onPressed: _resetCounter,
                 tooltip: 'Reset the counter',
                 child: const Icon(Icons.restart_alt_outlined),
+              ),
+              DecimalInputField(
+                numberToBeRounded: _counter,
+                setResult: _setCounter,
               ),
             ],
           ),
