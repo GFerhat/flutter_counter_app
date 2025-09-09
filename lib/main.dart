@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:io';
 
 void main() {
@@ -136,10 +137,6 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const Text(
-                'Press the buttons to change the Number:',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
               Text(
                 '$_counter',
                 style: Theme.of(context).textTheme.headlineMedium,
@@ -149,6 +146,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 constraints: BoxConstraints(maxWidth: 80),
                 child: TextField(
                   decoration: InputDecoration(border: OutlineInputBorder()),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    LengthLimitingTextInputFormatter(5),
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
                 ),
               ),
               FloatingActionButton(
