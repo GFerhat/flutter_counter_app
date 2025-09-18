@@ -2,19 +2,26 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter_counter_app/ConstrainedBoxClass.dart';
+import 'package:flutter_counter_app/pages/first_page.dart';
+import 'package:flutter_counter_app/pages/second_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-  List names = ["Marcel", "Arina", "Daniel", "Melissa", "Kedir", "Ferhat"];
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: GridView(gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: crossAxisCount), itemBuilder: itemBuilder)
+      home: FirstPage(),
+      routes: {
+        '/firstpage': (context) => FirstPage(),
+
+        '/secondpage': (context) => SecondPage(),
+      },
     );
   }
 }
